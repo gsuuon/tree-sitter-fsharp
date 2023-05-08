@@ -1152,3 +1152,50 @@ let x =
             (long_identifier (identifier)))
           (long_identifier_or_op
             (long_identifier (identifier))))))))
+
+
+================================================================================
+match expression
+================================================================================
+
+let x =
+  match y with
+  | 0 -> true
+  | 1 -> false
+
+--------------------------------------------------------------------------------
+
+(file
+  (value_declaration
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier
+            (identifier))))
+      (match_expression
+        (long_identifier_or_op
+          (long_identifier
+            (identifier)))
+        (rules
+          (rule
+            (const_pattern
+              (int))
+            (const))
+          (rule
+            (const_pattern
+              (int))
+            (const)))))))
+
+================================================================================
+match expression with application
+================================================================================
+
+let x =
+  match f y with
+  | :? string as z -> z
+  | _ -> ""
+
+--------------------------------------------------------------------------------
+
+(file)
+
